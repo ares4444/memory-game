@@ -32,7 +32,6 @@ function App() {
         <MemoryCard />
         <MemoryCard />
       </div>
-      
     </div>
   );
 }
