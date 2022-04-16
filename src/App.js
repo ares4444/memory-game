@@ -1,15 +1,26 @@
 import './App.css';
 import React from'react';
 import MemoryCard from './components/MemoryCard';
+import CardsWon from './components/CardsWon';
+import Grid from '@mui/material/Grid'
 
 function generateDeck() {
-  const symbols = ["∆", "ß", "£", "§", "•", "$", "+", "ø"];
+  const images = [
+    { "src": "/images/db-goku2.jpg" },
+    { "src": "/images/db-vegeta3.jpg" },
+    { "src": "/images/db-gohan3.jpg" },
+    { "src": "/images/db-broly1.jpg" },
+    { "src": "/images/db-berus2.jpg" },
+    { "src": "/images/db-frieza2.jpg" },
+    { "src": "/images/db-hit2.jpg" },
+    { "src": "/images/db-jiren1.jpg" },
+  ];
   const deck = [];
 
   for (let i = 0; i < 16; i++) {
     deck.push({
       isFlipped: false,
-      symbol: symbols[i % 8],
+      image: images[i % 8],
     });
   }
 
@@ -23,6 +34,10 @@ function shuffle(a) {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
+}
+
+function pairsWon() {
+
 }
 
 class App extends React.Component {
@@ -50,7 +65,7 @@ class App extends React.Component {
     if (newPickedCards.length === 2) {
       let card1Index = newPickedCards[0];
       let card2Index = newPickedCards[1];
-      if (newDeck[card1Index].symbol !== newDeck[card2Index].symbol) {
+      if (newDeck[card1Index].image !== newDeck[card2Index].image) {
         setTimeout(this.unflipCards.bind(this, card1Index, card2Index), 1000);
       }
       newPickedCards = [];
@@ -87,7 +102,7 @@ class App extends React.Component {
     let cardsJSX = this.state.deck.map((card, index) => {
       return (
         <MemoryCard
-          symbol={card.symbol}
+          image={card.image}
           isFlipped={card.isFlipped}
           key={index}
           pickCard={this.pickCard.bind(this, index)}
@@ -98,13 +113,18 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Memory Game</h1>
-          <p>Match cards to win</p>
+          <h1 className="App-title">Memory Game</h1>
+          <p className="Game-description">Match the DragonBall characters to win</p>
         </header>
+        <button className="btn" onClick={this.state.newDeck}>Play Again</button>
         <div>{cardsJSX.slice(0, 4)}</div>
         <div>{cardsJSX.slice(4, 8)}</div>
         <div>{cardsJSX.slice(8, 12)}</div>
         <div>{cardsJSX.slice(12, 16)}</div>
+        <h3>Characters Found</h3>
+        <Grid container spacing={1}>
+          <CardsWon />
+        </Grid>
       </div>
     );
   }

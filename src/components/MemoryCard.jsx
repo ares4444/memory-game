@@ -1,5 +1,6 @@
 import React from 'react'
 import './MemoryCard.css'
+
 class MemoryCard extends React.Component {
     render() {
         let memoryCardInnerClass= "MemoryCardInner"
@@ -13,9 +14,8 @@ class MemoryCard extends React.Component {
                 <div className="MemoryCard" onClick={this.props.pickCard}>
                     <div className={memoryCardInnerClass}>
                         <div className="MemoryCardBack">
-                            <img className="logo" src="https://www.digitalcrafts.com/img/digitalcrafts-logo-white-y.png" alt="digitalcrafts-logo" />
                         </div> 
-                        <div className="MemoryCardFront">{this.props.symbol}</div>
+                        <div className="MemoryCardFront"><img className="image" src={this.props.image.src} alt="card front"></img></div>
                     </div>
                 </div>
             </>  
