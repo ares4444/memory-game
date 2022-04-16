@@ -33,6 +33,10 @@
 }
 
 .Pairs-Found {
+  
+}
+
+h3 {
   height: 80px;
   min-height: 5vh;
   display: flex;

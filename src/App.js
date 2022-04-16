@@ -2,6 +2,7 @@ import './App.css';
 import React from'react';
 import MemoryCard from './components/MemoryCard';
 import CardsWon from './components/CardsWon';
+import Grid from '@mui/material/Grid'
 
 function generateDeck() {
   const images = [
@@ -115,14 +116,15 @@ class App extends React.Component {
           <h1 className="App-title">Memory Game</h1>
           <p className="Game-description">Match the DragonBall characters to win</p>
         </header>
-        <button className="btn" onClick={this.newDeck}>Play Again</button>
+        <button className="btn" onClick={this.state.newDeck}>Play Again</button>
         <div>{cardsJSX.slice(0, 4)}</div>
         <div>{cardsJSX.slice(4, 8)}</div>
         <div>{cardsJSX.slice(8, 12)}</div>
         <div>{cardsJSX.slice(12, 16)}</div>
-        <div className="Pairs-Found">
+        <h3>Characters Found</h3>
+        <Grid container spacing={1}>
           <CardsWon />
-        </div>
+        </Grid>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React from 'react'
+import Grid from '@mui/material/Grid'
 
 export default function CardsWon() {
     const pairsFound = [];
@@ -6,10 +7,9 @@ export default function CardsWon() {
 
   return (
     <div>
-        <h3>Characters Found</h3>
-        <div className="container">
+        <Grid item md={8}>
             
-        </div>
+        </Grid>
     </div>
   )
 }
